@@ -6,9 +6,7 @@ I would really like to hand over this project to Nymphx2, nerd moment of the day
 ## Miracs2:
 This project serves several purposes. The first one arose when I was playing CS with a scout and needed a centralized crosshair. So, the first characteristic of this system is to place a dot in the center of the screen. It evolved with 'what if I also have a dot to know where the spray of the shot will go?' That's when I started putting a second dot on the screen, HUE HUE HUE... One day, I was playing Hell Let Loose, and I couldn't see the enemies, but they could see me. So the idea came up, 'what if I create a super ZOOM that works with any weapon?' HUE HUE HUE². So the third function of this project is to create a ZOOM from the center of the screen on a second monitor, running at an incredible 75fps. Yes, it resizes the center of the screen by 2x and replicates the images at 75FPS on a second monitor (without using Cuda Cores), 0 garbage collector, fixed memory allocation. I'm quite proud of this project; now I can complain about the Windows magnifier. 
 
-## Utils:
-
-## Várias utils entre elas:
+## Many Utils classes, among them:
 ### {
   ### FTP connection Handler:
   Aid in checking if a file exists, copying, pasting, adding, and so on.
