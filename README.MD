@@ -1,4 +1,4 @@
-# PedrinhoBancosPedidos
+# PersonalProjects
 
 ## LOLApi:
 I would really like to hand over this project to Nymphx2, nerd moment of the day, tired of being camped by people who play DUO with the Jungle. Solution? Create an app that checks who's DUO, using a heuristic from the match history of everyone in the game, utility over nine thousand.
