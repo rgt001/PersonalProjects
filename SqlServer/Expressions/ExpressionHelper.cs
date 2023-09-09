@@ -474,11 +474,17 @@ namespace SqlServer.Persistor
                 else if (exp.Member.MemberType == MemberTypes.Property)
                 {
                     var property = ((PropertyInfo)exp.Member);
+                    if (obj is string value)
+                        return value + "." + property.Name;
+
                     return MemberInfoHandler(property.GetValue(obj), property.PropertyType);
                 }
                 else if (exp.Member.MemberType == MemberTypes.Field)
                 {
                     var field = ((FieldInfo)exp.Member);
+                    if (obj is string value)
+                        return value + "." + field.Name;
+
                     return MemberInfoHandler(field.GetValue(obj), field.FieldType);
                 }
             }

@@ -11,15 +11,20 @@ namespace SqlServer.DataBase
 {
     public class Conexao : IDisposable
     {
-        //put your database configuration in the app config, after that input the config section in below(PlaceHolder)
-#if DEBUG //Usually we have differents connection string for debug and release
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["PlaceHolder"].ConnectionString);
-#else
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["PlaceHolder"].ConnectionString);
-#endif
+        private SqlConnection con = null;
+
+#warning For God's sake fix this connection class
+        public Conexao(string connectionString)
+        {
+            var existingConfiguration = ConfigurationManager.ConnectionStrings[connectionString];
+            if (existingConfiguration != null)
+                con = new SqlConnection(existingConfiguration.ConnectionString);
+            else
+                con = new SqlConnection(connectionString);
+        }
 
         //put a telegram bot token, so a message will be send wherever the connection fails
-        private static readonly TelegramBotClient Bot = new TelegramBotClient("placeholder");
+        //private static readonly TelegramBotClient Bot = new TelegramBotClient("placeholder");
 
         public SqlConnection Conectar()//Open connection
         {
@@ -40,7 +45,7 @@ namespace SqlServer.DataBase
                 {
                     if (tries == 13)
                     {
-                        Bot.SendTextMessageAsync(207898158, "Connection Failed");
+                        //Bot.SendTextMessageAsync(CHATID, "Connection Failed");
                         
                         throw new System.Runtime.Remoting.ServerException("Connection with Data Base Failed", ex);
                     }

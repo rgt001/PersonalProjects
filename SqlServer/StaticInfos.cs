@@ -43,7 +43,7 @@ namespace SqlServer
         {
             const string command = "SELECT TABLE_NAME, COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS";
             Dictionary<string, List<string>> tableAndColumns = new Dictionary<string, List<string>>();
-            using (Conexao con = new Conexao())
+            using (Conexao con = new Conexao(BootStrap.ConnectionString))
             {
                 using (SqlDataAdapter da = new SqlDataAdapter(command, con.Conectar()))
                 {

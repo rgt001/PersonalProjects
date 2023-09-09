@@ -16,7 +16,7 @@ namespace SqlServer.Persistor
     {
         private static string[] GetPrimaryKey(string tableName)
         {
-            using (Conexao con = new Conexao())
+            using (Conexao con = new Conexao(BootStrap.ConnectionString))
             {
                 using (SqlDataAdapter da = new SqlDataAdapter($"Select * from PrimaryKeys where table_name = '{tableName}'", con.Conectar()))
                 {
@@ -109,7 +109,7 @@ namespace SqlServer.Persistor
 
         public static IEnumerable<T> RunSql<T>(string command) where T : new()
         {
-            using (Conexao con = new Conexao())
+            using (Conexao con = new Conexao(BootStrap.ConnectionString))
             {
                 Type typeOfClass = typeof(T);
                 string tableName = typeOfClass.GetCustomAttribute<SqlTableNameAttribute>(false).Name;
@@ -142,7 +142,7 @@ namespace SqlServer.Persistor
 
         private static string GetParametrizedWhere(string tableName)
         {
-            using (Conexao con = new Conexao())
+            using (Conexao con = new Conexao(BootStrap.ConnectionString))
             {
                 using (SqlDataAdapter da = new SqlDataAdapter($"Select * from PrimaryKeys where table_name = '{tableName}'", con.Conectar()))
                 {

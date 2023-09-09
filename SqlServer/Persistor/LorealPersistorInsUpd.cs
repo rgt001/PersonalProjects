@@ -23,7 +23,7 @@ namespace SqlServer.Persistor
 
             using (SqlCommand cmd = new SqlCommand())
             {
-                using (Conexao con = new Conexao())
+                using (Conexao con = new Conexao(BootStrap.ConnectionString))
                 {
                     StringBuilder command = new StringBuilder($"Insert into {tableName} (");
                     StringBuilder values = new StringBuilder("(@");
@@ -92,7 +92,7 @@ namespace SqlServer.Persistor
 
             using (SqlCommand cmd = new SqlCommand())
             {
-                using (Conexao con = new Conexao())
+                using (Conexao con = new Conexao(BootStrap.ConnectionString))
                 {
                     StringBuilder command = new StringBuilder($"Update {tableName} set ");
 
@@ -143,7 +143,7 @@ namespace SqlServer.Persistor
 
             using (SqlCommand cmd = new SqlCommand())
             {
-                using (Conexao con = new Conexao())
+                using (Conexao con = new Conexao(BootStrap.ConnectionString))
                 {
                     string[] primaryKeys = GetPrimaryKey(tableName);
 

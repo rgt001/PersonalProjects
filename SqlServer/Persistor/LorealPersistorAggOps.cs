@@ -19,7 +19,7 @@ namespace SqlServer.Persistor
         {
             const string selectFrom = "Select * from ";
             Type typeDbNull = typeof(DBNull);
-            using (Conexao con = new Conexao())
+            using (Conexao con = new Conexao(BootStrap.ConnectionString))
             {
                 Type typeOfClass = typeof(T);
                 string tableName = typeOfClass.GetCustomAttribute<SqlTableNameAttribute>(false).Name;
