@@ -3,6 +3,9 @@
 ## LOLApi:
 I would really like to hand over this project to Nymphx2, nerd moment of the day, tired of being camped by people who play DUO with the Jungle. Solution? Create an app that checks who's DUO, using a heuristic from the match history of everyone in the game, utility over nine thousand.
 
+## TelegramBot:
+That one is like a diary, a simple CRUD(Create, Read, Update, Delete) using LorealPersistor through a Telegram bot API, anywhere you're if you have access to Telegram you have all your things, never ever forget something again.
+
 ## Miracs2:
 This project serves several purposes. The first one arose when I was playing CS with a scout and needed a centralized crosshair. So, the first characteristic of this system is to place a dot in the center of the screen. It evolved with 'what if I also have a dot to know where the spray of the shot will go?' That's when I started putting a second dot on the screen, HUE HUE HUE... One day, I was playing Hell Let Loose, and I couldn't see the enemies, but they could see me. So the idea came up, 'what if I create a super ZOOM that works with any weapon?' HUE HUE HUE². So the third function of this project is to create a ZOOM from the center of the screen on a second monitor, running at an incredible 75fps. Yes, it resizes the center of the screen by 2x and replicates the images at 75FPS on a second monitor (without using Cuda Cores), 0 garbage collector, fixed memory allocation. I'm quite proud of this project; now I can complain about the Windows magnifier. 
 
@@ -36,6 +39,6 @@ This project serves several purposes. The first one arose when I was playing CS 
   Some Type helpers, converting C# types to SQL, discovering the type of a generic property, converting an object to DATETIME, among others
 ### }
 
-## SQLServer
+## SQLServer(LorealPersistor)
 
 In the future, my masterpiece. I never really liked Entity Framework; I find its implementation somewhat rigid. But anyone can complain, right? That's when LorealPersistor was born. The idea here is a replacement for EF, with easily implemented classes, with 'wheres' entirely done in LINQ and converted to ADO (which theoretically always wins in terms of performance over EF). Select, Insert, InsertOrUpdate, Update, and in the future, joins and even easier-to-implement classes. After all, why do we specify the primary key and foreign keys if they are already in the database? Why not just create a class and say it belongs to table X, and start selecting and inserting as if there's no tomorrow?
