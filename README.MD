@@ -3,6 +3,14 @@
 ## LOLApi:
 I would really like to hand over this project to Nymphx2, nerd moment of the day, tired of being camped by people who play DUO with the Jungle. Solution? Create an app that checks who's DUO, using a heuristic from the match history of everyone in the game, utility over nine thousand.
 
+## TelegramBot:
+That one is like a diary, a simple CRUD(Create, Read, Update, Delete) using LorealPersistor through a Telegram bot API, anywhere you're if you have access to Telegram you have all your things, never ever forget something again.
+
+##PythonMemeGenerator
+The pandemic period arrives, no one is prepared for that. Then a new problem is created in the society: how can I post memes on teams? It's frustrating, every single time you need to edit images and then rename or request to teams to replace them. It's not an option since it will change the all the work with another memes that you did before.
+Yeah, after all this bla bla bla, I decided to create something for helping people with this issue. Using Python, I created a "MemeMaker". You just put memes inside a folder, then simply type de name of the meme image, select the text, and cut it into clipboard Voilà! the text will be replaced with the image, you can even type text to get insert into it.(Instructions within the project.)
+Use example:https://1drv.ms/i/s!ArV-plsl3hpIvlQugc5E41BxfYvY?e=CauifG
+
 ## Miracs2:
 This project serves several purposes. The first one arose when I was playing CS with a scout and needed a centralized crosshair. So, the first characteristic of this system is to place a dot in the center of the screen. It evolved with 'what if I also have a dot to know where the spray of the shot will go?' That's when I started putting a second dot on the screen, HUE HUE HUE... One day, I was playing Hell Let Loose, and I couldn't see the enemies, but they could see me. So the idea came up, 'what if I create a super ZOOM that works with any weapon?' HUE HUE HUE². So the third function of this project is to create a ZOOM from the center of the screen on a second monitor, running at an incredible 75fps. Yes, it resizes the center of the screen by 2x and replicates the images at 75FPS on a second monitor (without using Cuda Cores), 0 garbage collector, fixed memory allocation. I'm quite proud of this project; now I can complain about the Windows magnifier. 
 
