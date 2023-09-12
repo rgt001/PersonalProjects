@@ -55,8 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArrayInsert.cs" />
+    <Compile Include="Attributes\AttributesHandler.cs" />
     <Compile Include="ClassToStringSeparated.cs" />
     <Compile Include="CollectionExtensions\DictionaryExtensions.cs" />
+    <Compile Include="CollectionExtensions\SortableExtension.cs" />
     <Compile Include="Conversions\Bool.cs" />
     <Compile Include="DictDictionary.cs" />
     <Compile Include="EanHelper.cs" />
@@ -66,6 +68,12 @@
     <Compile Include="ExcelHandler\OpenBase.cs" />
     <Compile Include="ExcelHandler\XLSX.cs" />
     <Compile Include="CollectionExtensions\ListExtensions.cs" />
+    <Compile Include="LorealPersistorHelpers\ICopyFrom.cs" />
+    <Compile Include="LorealPersistorHelpers\ToListOf.cs" />
+    <Compile Include="PSLikeOutput\ClassToOutPut.cs" />
+    <Compile Include="PSLikeOutput\GetPropertiesToExport.cs" />
+    <Compile Include="PSLikeOutput\PossibleNamesAttribute.cs" />
+    <Compile Include="SortableBindingList.cs" />
     <Compile Include="StringExtension.cs" />
     <Compile Include="FTPHandler\FtpHandler.cs" />
     <Compile Include="ImageHandler\ImageHandlerConverter.cs" />

@@ -57,11 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\AggregateCategoryDiary.cs" />
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Diary.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\DiaryModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TelegramMessage.cs" />
+    <Compile Include="ViewModel\CategoryViewModel.cs" />
+    <Compile Include="ViewModel\DiaryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

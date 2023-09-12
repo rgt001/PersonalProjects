@@ -13,10 +13,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using TelegramBot.Models;
+using TelegramBot.ViewModel;
 using Utils;
 using Utils.CollectionExtensions;
 using Utils.ExcelHandler;
 using Utils.ExcelHandler.Attributes;
+using Utils.LorealPersistorHelpers;
+using Utils.PSLikeOutput;
 
 namespace ExcelToTelegramBot
 {
@@ -143,21 +146,40 @@ namespace ExcelToTelegramBot
 
         private static IEnumerable<string> HandleList(string[] messageText)
         {
+            string[] text;
+            if (messageText.Length == 2)
+                text = messageText[1].Split('|');
+            else if (messageText.Length == 3)
+                text = messageText[2].Split('|');
+            else
+                text = new string[0];
+
+            string parameter = text[0].Trim();
+            string select = text.Length == 2 ? text[1].Trim() : string.Empty;
+
             switch (messageText[1].ToUpper())
             {
                 case "CATEGORY":
                     if (messageText.Length == 2)
-                        return LorealPersistor.Select<CategoryModel>().ConvertClassToString();
+                        return LorealPersistor.Select<CategoryModel>().CastTo<CategoryModel, CategoryViewModel>().TransformIntoOutPut(select);
 
-                    return LorealPersistor.Select<CategoryModel>(p => p.CategName.Contains(messageText[2])).ConvertClassToString();
+                    if (messageText.Length == 3)
+                        return LorealPersistor.Select<CategoryModel>(p => p.CategName.Contains(parameter)).CastTo<CategoryModel, CategoryViewModel>().TransformIntoOutPut(select);
+
+                    break;
                 case "DIARY":
-                    if (int.TryParse(messageText[2], out int result))
-                        return LorealPersistor.Select<DiaryModel>(p => p.CategoryID == result).ConvertClassToString();
+                    if (int.TryParse(parameter, out int result))
+                        return LorealPersistor.Select<DiaryModel>(p => p.CategoryID == result).CastTo<DiaryModel, DiaryViewModel>().TransformIntoOutPut(select);
 
-                    return LorealPersistor.Select<DiaryModel>(p => p.EventInformation.Contains(messageText[2])).ConvertClassToString();
+                    if (messageText.Length == 3)
+                        return LorealPersistor.Select<DiaryModel>(p => p.EventInformation.Contains(parameter)).CastTo<DiaryModel, DiaryViewModel>().TransformIntoOutPut(select);
+
+                    break;
                 default:
                     return Enumerable.Empty<string>();
             }
+
+            return Enumerable.Empty<string>();
         }
 
         private static void Initiliaze()
