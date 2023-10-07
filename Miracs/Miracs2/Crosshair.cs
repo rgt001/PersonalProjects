@@ -31,32 +31,35 @@ namespace Miracs2
             int currentWidth = this.Size.Width;
             int currentHeight = this.Size.Height;
 
+
+            int height = (currentWidth / 2);
+            int width = (currentHeight / 2);
             switch (type)
             {
                 case CrosshairType.normal:
                     CurrentType = type;
                     this.Location = new Point(955, 486);
-                    this.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2 + 3,
-                              (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2 - 46);
+                    this.Location = new Point((Screen.PrimaryScreen.Bounds.Width - width) / 2 + 3,
+                              (Screen.PrimaryScreen.Bounds.Height - height) / 2 - 46);
                     break;
                 case CrosshairType.centro:
                     CurrentType = type;
-                    this.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
-                          (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
+                    this.CenterToScreen();
+                    //this.Location = new Point((Screen.PrimaryScreen.Bounds.Width / 2) - (width == 0 ? 4 : width), (Screen.PrimaryScreen.Bounds.Height / 2) - (height == 0 ? 4 : height));
                     break;
                 case CrosshairType.diferente:
                     CurrentType = type;
-                    this.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2 + nwidth,
-                          (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2 - nheight);
+                    this.Location = new Point((Screen.PrimaryScreen.Bounds.Width - width) / 2 + nwidth,
+                          (Screen.PrimaryScreen.Bounds.Height - height) / 2 - nheight);
                     break;
                 case CrosshairType.HellNotLoose:
                     CurrentType = type;
-                    this.Location = new Point((((Screen.PrimaryScreen.WorkingArea.Width) / 2) - 3), ((Screen.PrimaryScreen.WorkingArea.Height) / 2) + 20);
+                    this.Location = new Point((((Screen.PrimaryScreen.Bounds.Width) / 2) - 3), ((Screen.PrimaryScreen.Bounds.Height) / 2) + 20);
                     break;
                 case CrosshairType.Cursor:
                     CurrentType = type;
-                    this.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2 + nwidth,
-                          ((Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2 - nheight) + 23);
+                    this.Location = new Point((Screen.PrimaryScreen.Bounds.Width - width) / 2 + nwidth,
+                          ((Screen.PrimaryScreen.Bounds.Height - height) / 2 - nheight) + 23);
                     break;
                 case CrosshairType.Decrease:
                     Size size = new Size(currentWidth - 1, currentHeight - 1);
@@ -75,6 +78,17 @@ namespace Miracs2
             }
 
             GC.Collect();
+        }
+
+        protected void CenterToScreen()
+        {
+            Point location = default(Point);
+            Screen screen = Screen.PrimaryScreen;
+
+            Rectangle workingArea = screen.Bounds;
+            location.X = Math.Max(workingArea.X, workingArea.X + (workingArea.Width - base.Width) / 2);
+            location.Y = Math.Max(workingArea.Y, workingArea.Y + (workingArea.Height - base.Height) / 2);
+            Location = location;
         }
 
         //Rectangle OldRect = Rectangle.Empty;

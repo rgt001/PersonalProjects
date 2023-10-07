@@ -47,6 +47,7 @@
             // 
             // btnnormal
             // 
+            this.btnnormal.Enabled = false;
             this.btnnormal.Location = new System.Drawing.Point(13, 82);
             this.btnnormal.Name = "btnnormal";
             this.btnnormal.Size = new System.Drawing.Size(69, 31);
@@ -67,6 +68,7 @@
             // 
             // btndiferente
             // 
+            this.btndiferente.Enabled = false;
             this.btndiferente.Location = new System.Drawing.Point(206, 82);
             this.btndiferente.Name = "btndiferente";
             this.btndiferente.Size = new System.Drawing.Size(70, 31);
@@ -77,6 +79,7 @@
             // 
             // btndois
             // 
+            this.btndois.Enabled = false;
             this.btndois.Location = new System.Drawing.Point(13, 136);
             this.btndois.Name = "btndois";
             this.btndois.Size = new System.Drawing.Size(69, 31);
@@ -87,6 +90,7 @@
             // 
             // btnnenhum
             // 
+            this.btnnenhum.Enabled = false;
             this.btnnenhum.Location = new System.Drawing.Point(109, 136);
             this.btnnenhum.Name = "btnnenhum";
             this.btnnenhum.Size = new System.Drawing.Size(70, 31);

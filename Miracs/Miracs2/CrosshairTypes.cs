@@ -17,5 +17,6 @@ namespace Miracs2
         Decrease = 7,
         Increase = 8,
         Magnifier = 9,
+        Move = 10,
     }
 }

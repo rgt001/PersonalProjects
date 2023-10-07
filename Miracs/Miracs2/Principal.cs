@@ -12,6 +12,7 @@ namespace Miracs2
     public partial class Principal : Form
     {
         List<Crosshair> Crosshairs = new List<Crosshair>();
+        Magnifier magnifier = null;
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vk);
@@ -23,23 +24,34 @@ namespace Miracs2
             InitializeComponent();
 
             int id = (int)CrosshairType.normal;     // The id of the hotkey.
-            RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt, Keys.A.GetHashCode());
+            //RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt, Keys.A.GetHashCode());
             id = (int)CrosshairType.centro;
             RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt, Keys.S.GetHashCode());       // Register Alt + S as global hotkey.
-            id = (int)CrosshairType.dois;
-            RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt, Keys.D.GetHashCode());
+            //id = (int)CrosshairType.dois;
+            //RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt, Keys.D.GetHashCode());
             id = (int)CrosshairType.clear;
             RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt, Keys.Q.GetHashCode());
             //id = (int)CrosshairTypes.diferente;
             //RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt, Keys.W.GetHashCode());
-            id = (int)CrosshairType.HellNotLoose;
-            RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt, Keys.G.GetHashCode());
+            //id = (int)CrosshairType.HellNotLoose;
+            //RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt, Keys.G.GetHashCode());
             id = (int)CrosshairType.Decrease;
             RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt, Keys.Down.GetHashCode());
             id = (int)CrosshairType.Increase;
             RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt, Keys.Up.GetHashCode());
+            id = (int)CrosshairType.Move;
+            RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt, Keys.Right.GetHashCode());
             id = (int)CrosshairType.Magnifier;
             RegisterHotKey(this.Handle, id, (int)KeyModifier.Alt, Keys.W.GetHashCode());
+
+            for (int i = 0; i < Screen.AllScreens.Length; i++)
+            {
+                if (Screen.AllScreens[i].Primary)
+                {
+                    currentMonitor = i;
+                    break;
+                }
+            }
         }
 
         enum KeyModifier
@@ -97,6 +109,10 @@ namespace Miracs2
                     case CrosshairType.clear:
                         CloseAll();
                         break;
+                    case CrosshairType.Move:
+                        currentMonitor = currentMonitor == Screen.AllScreens.Length ? 0 : currentMonitor + 1;
+                        Move();
+                        break;
                     default:
                         break;
                 }
@@ -125,20 +141,32 @@ namespace Miracs2
                 
             }
 
-            Magnifier magnifier = new Magnifier();
+            magnifier = new Magnifier();
             magnifier.Show();
-            Point teste;
-            if (Screen.AllScreens.Length > 1)
+            Move();
+        }
+
+        int currentMonitor = 0;
+        private void Move()
+        {
+            try
             {
-                teste = Screen.AllScreens[1].WorkingArea.Location;
-                teste.Y = teste.Y + (magnifier.Height / 2);
-
-                if (teste.X < 0)
+                Point TempPosition;
+                if (Screen.AllScreens.Length > 1)
                 {
-                    teste.X = -magnifier.Width;
-                }
+                    TempPosition = Screen.AllScreens[currentMonitor].Bounds.Location;
+                    TempPosition.Y = TempPosition.Y + (magnifier.Height / 2);
 
-                magnifier.Location = teste;
+                    if (TempPosition.X < 0)
+                    {
+                        TempPosition.X = -magnifier.Width;
+                    }
+
+                    magnifier.Location = TempPosition;
+                }
+            }
+            catch (Exception ex)
+            {
             }
         }
 
@@ -188,14 +216,22 @@ namespace Miracs2
         private void btncentro_Click(object sender, EventArgs e)
         {
             InstantiateNewCrosshair(CrosshairType.centro);
+            ModifyExistingCrosshair(CrosshairType.Increase);
+            ModifyExistingCrosshair(CrosshairType.Decrease);
         }
 
         private void ModifyExistingCrosshair(CrosshairType type)
         {
-            foreach (var crosshair in Crosshairs)
+            try
             {
-                crosshair.ChangeType(type);
+                foreach (var crosshair in Crosshairs)
+                {
+                    crosshair.ChangeType(type);
+                }
             }
+            catch (Exception)
+            {
+            }            
         }
 
         private void btndiferente_Click(object sender, EventArgs e)
