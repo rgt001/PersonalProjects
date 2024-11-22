@@ -16,6 +16,27 @@ This project serves several purposes. The first one arose when I was playing CS 
 
 ## Many Utils classes, among them:
 ### {
+  ### GlobalStatusProgressManager
+
+  Designed to manage and track global progress statuses across multiple tasks or processes. It centralizes status updates, ensuring thread-safe consistency in concurrent environments while allowing real-time monitoring of progress. With support for multiple status categories, it simplifies the management of hierarchical or dependent task progress.
+
+  ### GridColorize
+
+  A utility class for dynamically applying colors to grid elements based on custom conditions or rules. This class simplifies the process of visually enhancing data grids by providing a centralized way to define and apply color schemes. It is ideal for applications where color-based visualization is used to highlight important data patterns or statuses, making grids more intuitive and visually engaging.
+
+  ### MultiCastObservable
+
+  I don’t like observables at all—maybe they’re a little too fancy for me. Usually, I prefer events over observables, but sometimes we need to work with them. So, I made this class to help me with the process.
+  A thread-safe implementation of the IObservable<T> and IObserver<T> pattern, designed to handle concurrent workloads efficiently. This class ensures that heavy observer processing won't block the notification pipeline by using a dynamic multi-threaded approach.
+
+   ### Key Features:
+        Non-blocking notifications with a ConcurrentQueue.
+        Dynamic worker thread management for scaling based on workload.
+        Signal synchronization using BlockingCollection to prevent race conditions.
+        Fault-tolerant workers with automatic recovery and detailed logging.
+
+  Ideal for real-time systems or any scenario requiring highly concurrent, reliable observable streams.
+
   ### FTP connection Handler:
   Aid in checking if a file exists, copying, pasting, adding, and so on.
   
