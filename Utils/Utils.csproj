@@ -84,6 +84,7 @@
     <Compile Include="CollectionExtensions\DictionaryExtensions.cs" />
     <Compile Include="CollectionExtensions\SortableExtension.cs" />
     <Compile Include="Conversions\Bool.cs" />
+    <Compile Include="DateKeeper.cs" />
     <Compile Include="DictDictionary.cs" />
     <Compile Include="EanHelper.cs" />
     <Compile Include="ExcelHandler\Attributes\Attributes.cs" />
