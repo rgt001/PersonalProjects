@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="ArrayInsert.cs" />
     <Compile Include="Attributes\AttributesHandler.cs" />
+    <Compile Include="CacheDictionary.cs" />
     <Compile Include="ClassToStringSeparated.cs" />
     <Compile Include="CollectionExtensions\DictionaryExtensions.cs" />
     <Compile Include="CollectionExtensions\SortableExtension.cs" />
